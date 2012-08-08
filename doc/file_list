@@ -1,0 +1,36 @@
+zerodb_server文件夹
+	bloom_filter.h	bloom过滤器
+	bloom_filter.c
+	zerodb_server.c	server主程序
+	key_slave_map.h	key和slave的映射
+	key_slave_map.c
+	zerodb_server_conf.h	server配置
+	zerodb_server_conf.c
+	
+zerodb_slave文件夹
+	cache.h	缓存
+	cache.c
+	record.h	记录
+	record.c
+	persistent.h	持久化
+	persistent.c
+	index.h	索引
+	index.c
+	zerodb_slave.c	slave主程序
+	zerodb_slave_conf.h	slave配置
+	zerodb_slave_conf.c
+
+公用
+log.h	日志
+log.c
+key.h	key的一致性hash、比较等操作
+key.c
+hash.h	hash函数等
+hash.c
+zmq_helper.h	zmq接口分装
+zmq_helper.c
+common.h	常用函数
+common.c
+
+
+要用到的库：zmq, snappy, json-c
