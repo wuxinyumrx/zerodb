@@ -1,0 +1,9 @@
+*.[oa]
+*.so
+.*.swp
+.*.swo
+*.~
+tags
+tags.ut
+tags.fn
+cscope.out
