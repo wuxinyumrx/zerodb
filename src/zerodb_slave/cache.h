@@ -46,15 +46,11 @@ int32_t cache_destroy(cache_p *cache);
 /// @synopsis 给定key获取缓存区的value
 ///
 /// @param cache 缓存区
-/// @param key key的hash值
-/// @param key_str key值
-/// @param key_str_len key值长度
-/// @param value 返回value
-/// @param value_len 返回value长度
+/// @param record in 带有key的信息 out 带有key和value信息
 ///
 /// @returns 是否正确
 // --------------------------------------------------------------------------
-int32_t cache_get(cache_p cache, key_t key, const char *key_str, size_t key_str_len, char **value, size_t *value_len);
+int32_t cache_get(cache_p cache, record_p record);
 
 // --------------------------------------------------------------------------
 /// @synopsis 将record存入缓存区

@@ -13,15 +13,62 @@ struct _index_t
 typedef struct _index_t index_t;
 typedef struct _index_t *index_p;
 
-int32_t index_create();
+// --------------------------------------------------------------------------
+/// @synopsis 创建索引
+///
+/// @param index 索引
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t index_create(index_p *index);
 
-int32_t index_destroy();
+// --------------------------------------------------------------------------
+/// @synopsis 销毁索引
+///
+/// @param index 索引
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t index_destroy(index_p *index);
 
-int32_t index_set();
+// --------------------------------------------------------------------------
+/// @synopsis 索引update或add，同时会调用cache和persistent相关函数
+///
+/// @param index 索引
+/// @param record 数据记录
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t index_set(index_p index, record_p record);
 
-int32_t index_del();
+// --------------------------------------------------------------------------
+/// @synopsis 索引delete，同时会调用cache和persistent相关函数
+///
+/// @param index 索引
+/// @param record 数据记录，仅包含key的信息
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t index_del(index_p index, record_p record);
 
-int32_t index_get();
+// --------------------------------------------------------------------------
+/// @synopsis 索引get，同时会调用cache和persistent相关函数
+///
+/// @param index 索引
+/// @param record in 带有key的信息 out带有key和value信息
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t index_get(index_p index, record_p record);
+
+// --------------------------------------------------------------------------
+/// @synopsis index和persistent协作merge持久化文件
+///
+/// @param index 索引
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t index_merge(index_p index);
 
 #endif /* end of include guard: __INDEX_H__ */
 

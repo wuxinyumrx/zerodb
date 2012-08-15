@@ -13,9 +13,24 @@ struct _zerodb_slave_conf_t
 typedef struct _zerodb_slave_conf_t zerodb_slave_conf_t;
 typedef struct _zerodb_slave_conf_t *zerodb_slave_conf_p;
 
-int32_t zerodb_slave_conf_load();
+// --------------------------------------------------------------------------
+/// @synopsis 载入zerodb工作端配置
+///
+/// @param zerodb_slave_conf zerodb工作端配置
+/// @param zerodb_slave_conf_location 配置文件地址
+///
+/// @returns 
+// --------------------------------------------------------------------------
+int32_t zerodb_slave_conf_load(zerodb_slave_conf_p zerodb_slave_conf, char *zerodb_slave_conf_location);
 
-int32_t zerodb_slave_conf_init();
+// --------------------------------------------------------------------------
+/// @synopsis 初始化工作端配置
+///
+/// @param zerodb_slave_conf zerodb工作端配置
+///
+/// @returns 
+// --------------------------------------------------------------------------
+int32_t zerodb_slave_conf_init(zerodb_slave_conf_p zerodb_slave_conf);
 
 #endif /* end of include guard: __ZERODB_SLAVE_CONF_H__ */
 
