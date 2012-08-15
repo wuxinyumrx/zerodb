@@ -20,13 +20,51 @@ struct _slab_t
 typedef struct _slab_t slab_t;
 typedef struct _slab_t *slab_p;
 
-int32_t cache_create();
+// --------------------------------------------------------------------------
+/// @synopsis 创建缓存区
+///
+/// @param cache 缓存区
+/// @param capacity 最大容量
+/// @param slab_num 分区个数
+/// @param min_slab_size 最小slab的大小
+/// @param ratio 增长比
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t cache_create(cache_p *cache, uint32_t capacity, uint32_t slab_num, uint32_t min_slab_size, float ratio);
 
-int32_t cache_destroy();
+// --------------------------------------------------------------------------
+/// @synopsis 销毁缓存区
+///
+/// @param cache 缓存区
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t cache_destroy(cache_p *cache);
 
-int32_t cache_get();
+// --------------------------------------------------------------------------
+/// @synopsis 给定key获取缓存区的value
+///
+/// @param cache 缓存区
+/// @param key key的hash值
+/// @param key_str key值
+/// @param key_str_len key值长度
+/// @param value 返回value
+/// @param value_len 返回value长度
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t cache_get(cache_p cache, key_t key, const char *key_str, size_t key_str_len, char **value, size_t *value_len);
 
-int32_t cache_set();
+// --------------------------------------------------------------------------
+/// @synopsis 将record存入缓存区
+///
+/// @param cache 缓存区
+/// @param record 数据记录
+///
+/// @returns 是否正确
+// --------------------------------------------------------------------------
+int32_t cache_set(cache_p cache, record_p record);
 
 #endif /* end of include guard: __CACHE_H__ */
 

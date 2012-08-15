@@ -13,7 +13,7 @@ struct _key_slave_map_t
 typedef struct _key_slave_map_t key_slave_map_t;
 typedef struct _key_slave_map_t *key_slave_map_p;
 
-int32_t key_slave_map_create();
+int32_t key_slave_map_create(key_slave_map_p *key_slave_map, );
 
 int32_t key_slave_map_destroy();
 

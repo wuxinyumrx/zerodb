@@ -8,6 +8,8 @@
 
 #include <json/json-c.h>
 
+#define ZERODB_SERVER_CONF_LOCATION "./"
+
 struct _zerodb_server_conf_t
 {
     /* data */
@@ -15,9 +17,23 @@ struct _zerodb_server_conf_t
 typedef struct _zerodb_server_conf_t zerodb_server_conf_t;
 typedef struct _zerodb_server_conf_t *zerodb_server_conf_p;
 
-int32_t zerodb_server_conf_load();
+// --------------------------------------------------------------------------
+/// @synopsis 载入zerodb服务端配置
+///
+/// @param zerodb_server_conf zerodb服务端配置
+///
+/// @returns 
+// --------------------------------------------------------------------------
+int32_t zerodb_server_conf_load(zerodb_server_conf_p zerodb_server_conf);
 
-int32_t zerodb_server_conf_init();
+// --------------------------------------------------------------------------
+/// @synopsis 初始化zerodb服务端配置
+///
+/// @param zerodb_server_conf zerodb服务端配置
+///
+/// @returns 
+// --------------------------------------------------------------------------
+int32_t zerodb_server_conf_init(zerodb_server_conf_p zerodb_server_conf);
 
 #endif /* end of include guard: __ZERODB_SERVER_CONF_H__ */
 

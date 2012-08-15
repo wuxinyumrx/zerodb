@@ -44,7 +44,7 @@ int32_t package_create_from_data(package_p package, char *data, size_t len);
 ///
 /// @returns 是否成功
 // --------------------------------------------------------------------------
-int32_t package_get_next_int16(package_p package, uint64_t *num);
+int32_t package_get_int64(package_p package, uint64_t *num);
 
 // --------------------------------------------------------------------------
 /// @synopsis 从一个package的当前位置获取下一个32位数值字段
@@ -54,7 +54,7 @@ int32_t package_get_next_int16(package_p package, uint64_t *num);
 ///
 /// @returns 是否成功
 // --------------------------------------------------------------------------
-int32_t package_get_next_int32(package_p package, uint32_t *num);
+int32_t package_get_int32(package_p package, uint32_t *num);
 
 // --------------------------------------------------------------------------
 /// @synopsis 从一个package的当前位置获取下一个16位数值字段
@@ -64,7 +64,17 @@ int32_t package_get_next_int32(package_p package, uint32_t *num);
 ///
 /// @returns 是否成功
 // --------------------------------------------------------------------------
-int32_t package_get_next_int16(package_p package, uint16_t *num);
+int32_t package_get_int16(package_p package, uint16_t *num);
+
+// --------------------------------------------------------------------------
+/// @synopsis 从一个package的当前位置获取下一个8位数值字段
+///
+/// @param package 当前package
+/// @param num 返回的8位数值
+///
+/// @returns 是否成功
+// --------------------------------------------------------------------------
+int32_t package_get_int8(package_p package, uint8_t *num);
 
 // --------------------------------------------------------------------------
 /// @synopsis 从一个package的当前位置获取下一个字符串字段
@@ -75,7 +85,58 @@ int32_t package_get_next_int16(package_p package, uint16_t *num);
 ///
 /// @returns 是否成功
 // --------------------------------------------------------------------------
-int32_t package_get_next_int16(package_p package, char **str, size_t len);
+int32_t package_get_string(package_p package, char **str, size_t len);
+
+// --------------------------------------------------------------------------
+/// @synopsis 向package增加一个64位的数值字段
+///
+/// @param package 当前package
+/// @param num 增加的64位数值字段
+///
+/// @returns 是否成功
+// --------------------------------------------------------------------------
+int32_t package_add_int64(package_p package, uint64_t num);
+
+// --------------------------------------------------------------------------
+/// @synopsis 向package增加一个32位的数值字段
+///
+/// @param package 当前package
+/// @param num 增加的32位数值字段
+///
+/// @returns 是否成功
+// --------------------------------------------------------------------------
+int32_t package_add_int32(package_p package, uint32_t num);
+
+// --------------------------------------------------------------------------
+/// @synopsis 向package增加一个16位的数值字段
+///
+/// @param package 当前package
+/// @param num 增加的16位数值字段
+///
+/// @returns 是否成功 
+// --------------------------------------------------------------------------
+int32_t package_add_int16(package_p package, uint16_t num);
+
+// --------------------------------------------------------------------------
+/// @synopsis 向package增加一个8位的数值字段
+///
+/// @param package 当前package
+/// @param num 增加的8位数值字段
+///
+/// @returns 是否成功 
+// --------------------------------------------------------------------------
+int32_t package_add_int8(package_p package, uint8_t num);
+
+// --------------------------------------------------------------------------
+/// @synopsis 向package增加一个字符串
+///
+/// @param package 当前package
+/// @param str 增加的字符串
+/// @param len 增加的字符串长度
+///
+/// @returns 是否成功
+// --------------------------------------------------------------------------
+int32_t package_add_string(package_p package, char *str, size_t len);
 
 #endif /* end of include guard: __PACKAGE_H__ */
 
