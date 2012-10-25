@@ -23,7 +23,7 @@ int32_t bloom_filter_create(bloom_filter_p *bloom_filter, size_t vector_length, 
     }
     va_end(ap); 
     *bloom_filter = new_bf;
-    return 1;
+    return 0;
 }
 
 int32_t bloom_filter_add(bloom_filter_p bloom_filter, const char *str)
@@ -38,7 +38,7 @@ int32_t bloom_filter_add(bloom_filter_p bloom_filter, const char *str)
  	unsigned char *byte = bloom_filter->bytes + value/8;
        	set_bit_i(*byte, 7 - value%8);	
     }    
-    return 1;
+    return 0;
 
 }
 
@@ -53,9 +53,9 @@ int32_t bloom_filter_check(bloom_filter_p bloom_filter, const char *str)
 	value = hash_func_i(str) % bloom_filter->bit_length;
 	unsigned char byte = *(bloom_filter->bytes + value/8);
 	if((byte << value%8 & 0x80) == 0)
-	    return 0;
+	    return -1;
     }
-    return 1;
+    return 0;
 }
 
 
@@ -74,7 +74,7 @@ int32_t bloom_filter_store(bloom_filter_p bloom_filter, const char *file_name)
         fprintf(fp, "%c", *(bloom_filter->bytes + i));
     }   
     fclose(fp);
-    return 1;
+    return 0;
 }
 char* char_2_binary(unsigned char ch)
 {

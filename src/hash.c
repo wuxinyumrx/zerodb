@@ -1,7 +1,7 @@
 #include "hash.h"
 
-uint32_t SDBMHash(char *str)
-{
+uint32_t sdbm_hash(char *str)
+{/*{{{*/
 	uint32_t hash = 0;
  
 	while (*str)
@@ -11,11 +11,11 @@ uint32_t SDBMHash(char *str)
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/
  
 // RS Hash Function
-uint32_t RSHash(char *str)
-{
+uint32_t rs_hash(char *str)
+{/*{{{*/
 	uint32_t b = 378551;
 	uint32_t a = 63689;
 	uint32_t hash = 0;
@@ -27,11 +27,11 @@ uint32_t RSHash(char *str)
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/
  
 // JS Hash Function
-uint32_t JSHash(char *str)
-{
+uint32_t js_hash(char *str)
+{/*{{{*/
 	uint32_t hash = 1315423911;
  
 	while (*str)
@@ -40,33 +40,33 @@ uint32_t JSHash(char *str)
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/
  
 // P. J. Weinberger Hash Function
-uint32_t PJWHash(char *str)
-{
-	uint32_t BitsInUnignedInt = (uint32_t)(sizeof(uint32_t) * 8);
-	uint32_t ThreeQuarters	= (uint32_t)((BitsInUnignedInt  * 3) / 4);
-	uint32_t OneEighth		= (uint32_t)(BitsInUnignedInt / 8);
-	uint32_t HighBits		 = (uint32_t)(0xFFFFFFFF) << (BitsInUnignedInt - OneEighth);
+uint32_t pjw_hash(char *str)
+{/*{{{*/
+	uint32_t seed = (uint32_t)(sizeof(uint32_t) * 8);
+	uint32_t three_quarters = (uint32_t)((seed * 3) / 4);
+	uint32_t one_eight = (uint32_t)(seed / 8);
+	uint32_t high_bits = (uint32_t)(0xFFFFFFFF) << (seed - one_eight);
 	uint32_t hash			 = 0;
 	uint32_t test			 = 0;
  
 	while (*str)
 	{
-		hash = (hash << OneEighth) + (*str++);
-		if ((test = hash & HighBits) != 0)
+		hash = (hash << one_eight) + (*str++);
+		if ((test = hash & high_bits) != 0)
 		{
-			hash = ((hash ^ (test >> ThreeQuarters)) & (~HighBits));
+			hash = ((hash ^ (test >> three_quarters)) & (~high_bits));
 		}
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/
  
 // ELF Hash Function
-uint32_t ELFHash(char *str)
-{
+uint32_t elf_hash(char *str)
+{/*{{{*/
 	uint32_t hash = 0;
 	uint32_t x	= 0;
  
@@ -81,11 +81,11 @@ uint32_t ELFHash(char *str)
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/
  
 // BKDR Hash Function
-uint32_t BKDRHash(char *str)
-{
+uint32_t bkdr_hash(char *str)
+{/*{{{*/
 	uint32_t seed = 131; // 31 131 1313 13131 131313 etc..
 	uint32_t hash = 0;
  
@@ -95,11 +95,11 @@ uint32_t BKDRHash(char *str)
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/
  
 // DJB Hash Function
-uint32_t DJBHash(char *str)
-{
+uint32_t djb_hash(char *str)
+{/*{{{*/
 	uint32_t hash = 5381;
  
 	while (*str)
@@ -108,11 +108,11 @@ uint32_t DJBHash(char *str)
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/
  
 // AP Hash Function
-uint32_t APHash(char *str)
-{
+uint32_t ap_hash(char *str)
+{/*{{{*/
 	uint32_t hash = 0;
 	int i;
  
@@ -129,4 +129,4 @@ uint32_t APHash(char *str)
 	}
  
 	return (hash & 0x7FFFFFFF);
-}
+}/*}}}*/

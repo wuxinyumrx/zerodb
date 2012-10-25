@@ -133,8 +133,8 @@ int32_t command_interprete(char *command_str)
 }
 int32_t main()
 {
-    bloom_filter_create(&bloom_filter_g, 32, 4, SDBMHash, RSHash, JSHash, PJWHash);
-    key_slave_map_create(&key_slave_map_g, RSHash);
+    bloom_filter_create(&bloom_filter_g, 32, 4, sdbm_hash, rs_hash, js_hash, pjw_hash);
+    key_slave_map_create(&key_slave_map_g, rs_hash);
     char line[100];
     //bloom_filter_test();
     while(gets(line))

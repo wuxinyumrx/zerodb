@@ -8,13 +8,21 @@
 #include <stdint.h>
 
 typedef uint32_t (*str_hash_func_p)(char *key);
-uint32_t SDBMHash(char *str);
-uint32_t RSHash(char *str);
-uint32_t JSHash(char *str);
-uint32_t PJWHash(char *str);
-uint32_t ELFHash(char *str);
-uint32_t BKDRHash(char *str);
-uint32_t DJBHash(char *str);
-uint32_t APHash(char *str);
+
+uint32_t sdbm_hash(char *str);
+
+uint32_t rs_hash(char *str);
+
+uint32_t js_hash(char *str);
+
+uint32_t pjw_hash(char *str);
+
+uint32_t elf_hash(char *str);
+
+uint32_t bkdr_hash(char *str);
+
+uint32_t djb_hash(char *str);
+
+uint32_t ap_hash(char *str);
 
 #endif
